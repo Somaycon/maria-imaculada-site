@@ -25,6 +25,7 @@ body {
     color: var(--text-color);
     background-color: var(--bg-light);
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 a {
@@ -174,6 +175,7 @@ section {
     align-items: center;
     overflow: hidden;
     position: relative;
+    scroll-margin-top: 70px;
 }
 
 .content-wrapper {
