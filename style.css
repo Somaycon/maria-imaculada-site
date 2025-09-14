@@ -25,7 +25,45 @@ body {
     color: var(--text-color);
     background-color: var(--bg-light);
     scroll-behavior: smooth;
-    overflow-x: hidden;
+}
+
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+
+  /* Remove todas as transições suaves. As mudanças serão instantâneas. */
+  .btn,
+  .feature-box,
+  .content-image,
+  .navbar,
+  .slide-in-right,
+  .slide-in-left {
+    transition: none;
+  }
+
+  /* Remove as animações de entrada (@keyframes) */
+  .fade-in,
+  .slide-in-right,
+  .slide-in-left {
+    animation: none;
+  }
+
+  /* IMPORTANTE: Garante que os elementos que antes eram animados
+    agora apareçam visíveis e na posição correta por padrão.
+  */
+  .fade-in,
+  .slide-in-right,
+  .slide-in-left {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Remove os efeitos de movimento ao passar o mouse (hover) */
+  .btn:hover,
+  .feature-box:hover,
+  .content-image:hover {
+    transform: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Mantém uma sombra sutil no hover */
+  }
+
 }
 
 a {
@@ -175,7 +213,6 @@ section {
     align-items: center;
     overflow: hidden;
     position: relative;
-    scroll-margin-top: 70px;
 }
 
 .content-wrapper {
