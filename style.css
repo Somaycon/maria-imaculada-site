@@ -1,0 +1,335 @@
+/* Importação de fontes */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+    --primary-color: #4a148c;
+    --secondary-color: #880e4f;
+    --accent-color: #fdd835;
+    --text-color: #333;
+    --light-text-color: #f8f8f8;
+    --bg-light: #f4f7f6;
+    --bg-dark: #eceff1;
+    --heading-font: 'Playfair Display', serif;
+    --body-font: 'Open Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--body-font);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-light);
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+/* [MOBILE-FIRST] Tipografia base para celulares */
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.6rem; }
+
+p {
+    margin-bottom: 1rem;
+    font-size: 1rem; /* Tamanho confortável para leitura no celular */
+}
+
+ul {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+ul li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+ul li::before {
+    content: '•';
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Nossa-Senhora-Conceicao.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--light-text-color);
+    padding: 0 1rem; /* Adicionado para evitar que o texto encoste nas bordas */
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 1rem;
+}
+
+/* [MOBILE-FIRST] Títulos do Hero ajustados para celular */
+.hero-content h1 {
+    font-size: 3rem; /* Menor que antes, para caber melhor na tela */
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* [MOBILE-FIRST] Navegação otimizada para celular */
+.navbar {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 0.5rem 0; /* Menos padding vertical no celular */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: var(--secondary-color);
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: space-around; /* Distribui os itens igualmente */
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0 0.5rem;
+}
+
+.navbar ul li a {
+    color: var(--light-text-color);
+    padding: 0.6rem 0.8rem; /* Padding ajustado para toque */
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+    font-size: 0.9rem; /* Fonte um pouco menor para caber */
+    border-radius: 5px;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+}
+
+.navbar ul li a.active {
+    pointer-events: none;
+}
+
+/* [MOBILE-FIRST] Conteúdo Principal com espaçamento para celular */
+main {
+    padding-top: 0;
+}
+
+section {
+    padding: 3rem 1rem; /* Menos padding lateral para celular */
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.content-wrapper {
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+section:nth-child(even) {
+    background-color: var(--bg-dark);
+}
+
+.bg-alt {
+    background-color: var(--bg-dark);
+}
+
+.feature-box {
+    background-color: var(--light-text-color);
+    border-left: 5px solid var(--primary-color);
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.feature-box h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.feature-box.primary { border-color: var(--secondary-color); }
+.feature-box.secondary { border-color: var(--accent-color); }
+
+/* [MOBILE-FIRST] Imagens maiores no celular */
+.image-container {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.content-image {
+    max-width: 95%; /* Imagem ocupa quase toda a largura da tela */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.content-image:hover {
+    transform: scale(1.02);
+}
+
+.image-caption {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* Botão "Voltar ao Topo" */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    display: none;
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+}
+
+/* Animações (não precisam de alteração) */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+.fade-in.delay-1 { animation-delay: 0.5s; }
+.fade-in.delay-2 { animation-delay: 1s; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.slide-in-right.visible,
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ------------------------------------------- */
+/* [DESKTOP] Media Queries para telas maiores  */
+/* A partir de 768px de largura (tablets e desktops) */
+/* ------------------------------------------- */
+
+@media (min-width: 768px) {
+    /* [DESKTOP] Aumenta os tamanhos das fontes */
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 1.8rem; }
+    p { font-size: 1.1rem; }
+
+    .hero-content h1 {
+        font-size: 4.5rem;
+    }
+    .hero-content p {
+        font-size: 1.5rem;
+    }
+
+    /* [DESKTOP] Restaura o padding das seções */
+    section {
+        padding: 4rem 2rem;
+    }
+
+    /* [DESKTOP] Centraliza a navegação */
+    .navbar ul {
+        justify-content: center;
+    }
+    .navbar ul li a {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    /* [DESKTOP] Diminui o tamanho relativo da imagem */
+    .content-image {
+        max-width: 70%;
+    }
+}
