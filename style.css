@@ -25,45 +25,7 @@ body {
     color: var(--text-color);
     background-color: var(--bg-light);
     scroll-behavior: smooth;
-}
-
-@media (max-width: 768px), (prefers-reduced-motion: reduce) {
-
-  /* Remove todas as transições suaves. As mudanças serão instantâneas. */
-  .btn,
-  .feature-box,
-  .content-image,
-  .navbar,
-  .slide-in-right,
-  .slide-in-left {
-    transition: none;
-  }
-
-  /* Remove as animações de entrada (@keyframes) */
-  .fade-in,
-  .slide-in-right,
-  .slide-in-left {
-    animation: none;
-  }
-
-  /* IMPORTANTE: Garante que os elementos que antes eram animados
-    agora apareçam visíveis e na posição correta por padrão.
-  */
-  .fade-in,
-  .slide-in-right,
-  .slide-in-left {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Remove os efeitos de movimento ao passar o mouse (hover) */
-  .btn:hover,
-  .feature-box:hover,
-  .content-image:hover {
-    transform: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Mantém uma sombra sutil no hover */
-  }
-
+    overflow-x: hidden; /* <-- AJUSTE CRÍTICO 1: Impede o scroll horizontal */
 }
 
 a {
@@ -84,7 +46,7 @@ h3 { font-size: 1.6rem; }
 
 p {
     margin-bottom: 1rem;
-    font-size: 1rem; /* Tamanho confortável para leitura no celular */
+    font-size: 1rem;
 }
 
 ul {
@@ -115,7 +77,7 @@ ul li::before {
     align-items: center;
     text-align: center;
     color: var(--light-text-color);
-    padding: 0 1rem; /* Adicionado para evitar que o texto encoste nas bordas */
+    padding: 0 1rem;
 }
 
 .hero-content {
@@ -123,9 +85,8 @@ ul li::before {
     padding: 1rem;
 }
 
-/* [MOBILE-FIRST] Títulos do Hero ajustados para celular */
 .hero-content h1 {
-    font-size: 3rem; /* Menor que antes, para caber melhor na tela */
+    font-size: 3rem;
     color: var(--light-text-color);
     margin-bottom: 1rem;
 }
@@ -155,11 +116,11 @@ ul li::before {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* [MOBILE-FIRST] Navegação otimizada para celular */
+/* Navegação */
 .navbar {
     background-color: var(--primary-color);
     color: var(--light-text-color);
-    padding: 0.5rem 0; /* Menos padding vertical no celular */
+    padding: 0.5rem 0;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -173,7 +134,7 @@ ul li::before {
 
 .navbar ul {
     display: flex;
-    justify-content: space-around; /* Distribui os itens igualmente */
+    justify-content: space-around;
     align-items: center;
     list-style: none;
     margin: 0;
@@ -182,11 +143,11 @@ ul li::before {
 
 .navbar ul li a {
     color: var(--light-text-color);
-    padding: 0.6rem 0.8rem; /* Padding ajustado para toque */
+    padding: 0.6rem 0.8rem;
     display: block;
     transition: background-color 0.3s ease, color 0.3s ease;
     font-weight: 600;
-    font-size: 0.9rem; /* Fonte um pouco menor para caber */
+    font-size: 0.9rem;
     border-radius: 5px;
 }
 
@@ -200,19 +161,20 @@ ul li::before {
     pointer-events: none;
 }
 
-/* [MOBILE-FIRST] Conteúdo Principal com espaçamento para celular */
+/* Conteúdo Principal */
 main {
     padding-top: 0;
 }
 
 section {
-    padding: 3rem 1rem; /* Menos padding lateral para celular */
+    padding: 3rem 1rem;
     min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     position: relative;
+    scroll-margin-top: 70px; /* <-- AJUSTE CRÍTICO 2: Impede que o menu cubra o título */
 }
 
 .content-wrapper {
@@ -253,14 +215,13 @@ section:nth-child(even) {
 .feature-box.primary { border-color: var(--secondary-color); }
 .feature-box.secondary { border-color: var(--accent-color); }
 
-/* [MOBILE-FIRST] Imagens maiores no celular */
 .image-container {
     margin-top: 2rem;
     text-align: center;
 }
 
 .content-image {
-    max-width: 95%; /* Imagem ocupa quase toda a largura da tela */
+    max-width: 95%;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -307,7 +268,7 @@ footer {
     color: var(--accent-color);
 }
 
-/* Animações (não precisam de alteração) */
+/* Animações */
 .fade-in {
     opacity: 0;
     animation: fadeIn 1s forwards;
@@ -334,13 +295,15 @@ footer {
     transform: translateX(0);
 }
 
-/* ------------------------------------------- */
-/* [DESKTOP] Media Queries para telas maiores  */
-/* A partir de 768px de largura (tablets e desktops) */
-/* ------------------------------------------- */
+/* =================================================================== */
+/* MEDIA QUERIES PARA TELAS MAIORES E AJUSTES DE ANIMAÇÃO              */
+/* =================================================================== */
 
+/* ------------------------------------------- */
+/* [DESKTOP] Estilos para telas maiores        */
+/* A partir de 768px de largura                */
+/* ------------------------------------------- */
 @media (min-width: 768px) {
-    /* [DESKTOP] Aumenta os tamanhos das fontes */
     h1 { font-size: 3.5rem; }
     h2 { font-size: 2.5rem; }
     h3 { font-size: 1.8rem; }
@@ -353,12 +316,10 @@ footer {
         font-size: 1.5rem;
     }
 
-    /* [DESKTOP] Restaura o padding das seções */
     section {
         padding: 4rem 2rem;
     }
 
-    /* [DESKTOP] Centraliza a navegação */
     .navbar ul {
         justify-content: center;
     }
@@ -367,8 +328,42 @@ footer {
         font-size: 1rem;
     }
     
-    /* [DESKTOP] Diminui o tamanho relativo da imagem */
     .content-image {
         max-width: 70%;
     }
+}
+
+/* ------------------------------------------- */
+/* Desativa animações para celulares e         */
+/* para usuários com movimento reduzido        */
+/* ------------------------------------------- */
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .btn,
+  .feature-box,
+  .content-image,
+  .navbar,
+  .slide-in-right,
+  .slide-in-left {
+    transition: none;
+  }
+
+  .fade-in,
+  .slide-in-right,
+  .slide-in-left {
+    animation: none;
+  }
+
+  .fade-in,
+  .slide-in-right,
+  .slide-in-left {
+    opacity: 1;
+    transform: none;
+  }
+
+  .btn:hover,
+  .feature-box:hover,
+  .content-image:hover {
+    transform: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
 }
