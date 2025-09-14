@@ -19,13 +19,16 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth; /* Mantém o scroll suave usando apenas CSS */
+}
+
 body {
     font-family: var(--body-font);
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-light);
-    scroll-behavior: smooth;
-    overflow-x: hidden; /* <-- AJUSTE CRÍTICO 1: Impede o scroll horizontal */
+    overflow-x: hidden; /* ESSENCIAL: Impede o scroll horizontal */
 }
 
 a {
@@ -43,30 +46,10 @@ h1, h2, h3 {
 h1 { font-size: 2.5rem; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.6rem; }
-
-p {
-    margin-bottom: 1rem;
-    font-size: 1rem;
-}
-
-ul {
-    list-style: none;
-    margin-bottom: 1rem;
-}
-
-ul li {
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-ul li::before {
-    content: '•';
-    color: var(--accent-color);
-    position: absolute;
-    left: 0;
-    font-weight: bold;
-}
+p { font-size: 1rem; margin-bottom: 1rem; }
+ul { list-style: none; margin-bottom: 1rem; }
+ul li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
+ul li::before { content: '•'; color: var(--accent-color); position: absolute; left: 0; font-weight: bold; }
 
 /* Hero Section */
 .hero {
@@ -80,22 +63,9 @@ ul li::before {
     padding: 0 1rem;
 }
 
-.hero-content {
-    max-width: 800px;
-    padding: 1rem;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    color: var(--light-text-color);
-    margin-bottom: 1rem;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.9);
-}
+.hero-content { max-width: 800px; padding: 1rem; }
+.hero-content h1 { font-size: 3rem; color: var(--light-text-color); margin-bottom: 1rem; }
+.hero-content p { font-size: 1.2rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9); }
 
 .btn {
     display: inline-block;
@@ -104,16 +74,12 @@ ul li::before {
     padding: 0.8rem 1.8rem;
     border-radius: 50px;
     font-weight: bold;
-    transition: all 0.3s ease;
     border: none;
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: var(--primary-color);
-    color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: #fbc02d; /* Efeito de hover mais simples */
 }
 
 /* Navegação */
@@ -125,11 +91,6 @@ ul li::before {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
-}
-
-.navbar.scrolled {
-    background-color: var(--secondary-color);
 }
 
 .navbar ul {
@@ -145,51 +106,27 @@ ul li::before {
     color: var(--light-text-color);
     padding: 0.6rem 0.8rem;
     display: block;
-    transition: background-color 0.3s ease, color 0.3s ease;
     font-weight: 600;
     font-size: 0.9rem;
     border-radius: 5px;
 }
 
-.navbar ul li a:hover,
-.navbar ul li a.active {
+.navbar ul li a:hover {
     background-color: var(--secondary-color);
     color: var(--accent-color);
 }
 
-.navbar ul li a.active {
-    pointer-events: none;
-}
-
 /* Conteúdo Principal */
-main {
-    padding-top: 0;
-}
-
 section {
     padding: 3rem 1rem;
-    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    position: relative;
-    scroll-margin-top: 70px; /* <-- AJUSTE CRÍTICO 2: Impede que o menu cubra o título */
+    scroll-margin-top: 70px; /* ESSENCIAL: Impede que o menu cubra o título */
 }
 
-.content-wrapper {
-    max-width: 900px;
-    width: 100%;
-    text-align: center;
-}
-
-section:nth-child(even) {
-    background-color: var(--bg-dark);
-}
-
-.bg-alt {
-    background-color: var(--bg-dark);
-}
+.content-wrapper { max-width: 900px; width: 100%; text-align: center; }
+section.bg-alt { background-color: var(--bg-dark); }
 
 .feature-box {
     background-color: var(--light-text-color);
@@ -198,46 +135,17 @@ section:nth-child(even) {
     margin: 1.5rem auto;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: left;
 }
 
-.feature-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.feature-box h3 {
-    color: var(--primary-color);
-    margin-top: 0;
-}
-
+.feature-box h3 { color: var(--primary-color); margin-top: 0; }
 .feature-box.primary { border-color: var(--secondary-color); }
 .feature-box.secondary { border-color: var(--accent-color); }
 
-.image-container {
-    margin-top: 2rem;
-    text-align: center;
-}
-
-.content-image {
-    max-width: 95%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-.content-image:hover {
-    transform: scale(1.02);
-}
-
-.image-caption {
-    font-size: 0.9rem;
-    color: #666;
-    margin-top: 0.5rem;
-    font-style: italic;
-}
+/* Imagens */
+.image-container { margin-top: 2rem; text-align: center; }
+.content-image { max-width: 95%; height: auto; border-radius: 8px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+.image-caption { font-size: 0.9rem; color: #666; margin-top: 0.5rem; font-style: italic; }
 
 /* Footer */
 footer {
@@ -248,122 +156,18 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Botão "Voltar ao Topo" */
-.back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-    display: none;
-    background-color: var(--secondary-color);
-    color: var(--light-text-color);
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.back-to-top:hover {
-    background-color: var(--primary-color);
-    color: var(--accent-color);
-}
-
-/* Animações */
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-}
-.fade-in.delay-1 { animation-delay: 0.5s; }
-.fade-in.delay-2 { animation-delay: 1s; }
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.slide-in-right {
-    opacity: 0;
-    transform: translateX(100px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.slide-in-left {
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.slide-in-right.visible,
-.slide-in-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* =================================================================== */
-/* MEDIA QUERIES PARA TELAS MAIORES E AJUSTES DE ANIMAÇÃO              */
-/* =================================================================== */
-
-/* ------------------------------------------- */
-/* [DESKTOP] Estilos para telas maiores        */
-/* A partir de 768px de largura                */
-/* ------------------------------------------- */
+/* [DESKTOP] Media Queries para telas maiores (a partir de 768px) */
 @media (min-width: 768px) {
     h1 { font-size: 3.5rem; }
     h2 { font-size: 2.5rem; }
     h3 { font-size: 1.8rem; }
     p { font-size: 1.1rem; }
 
-    .hero-content h1 {
-        font-size: 4.5rem;
-    }
-    .hero-content p {
-        font-size: 1.5rem;
-    }
+    .hero-content h1 { font-size: 4.5rem; }
+    .hero-content p { font-size: 1.5rem; }
 
-    section {
-        padding: 4rem 2rem;
-    }
-
-    .navbar ul {
-        justify-content: center;
-    }
-    .navbar ul li a {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-    
-    .content-image {
-        max-width: 70%;
-    }
-}
-
-/* ------------------------------------------- */
-/* Desativa animações para celulares e         */
-/* para usuários com movimento reduzido        */
-/* ------------------------------------------- */
-@media (max-width: 768px), (prefers-reduced-motion: reduce) {
-  .btn,
-  .feature-box,
-  .content-image,
-  .navbar,
-  .slide-in-right,
-  .slide-in-left {
-    transition: none;
-  }
-
-  .fade-in,
-  .slide-in-right,
-  .slide-in-left {
-    animation: none;
-  }
-
-  .fade-in,
-  .slide-in-right,
-  .slide-in-left {
-    opacity: 1;
-    transform: none;
-  }
-
-  .btn:hover,
-  .feature-box:hover,
-  .content-image:hover {
-    transform: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  }
+    section { padding: 4rem 2rem; }
+    .navbar ul { justify-content: center; }
+    .navbar ul li a { padding: 0.8rem 1.5rem; font-size: 1rem; }
+    .content-image { max-width: 70%; }
 }
